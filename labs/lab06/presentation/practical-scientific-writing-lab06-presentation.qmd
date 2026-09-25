@@ -15,23 +15,23 @@ subtitle: "Работа с библиографией"
 
 ## BibTeX + natbib
 
-\`\`\`text
+```text
 LaTeX → BibTeX → LaTeX → LaTeX
-\`\`\`
+```
 
 ## biblatex + Biber
 
-\`\`\`text
+```text
 LaTeX → Biber → LaTeX
-\`\`\`
+```
 
 # Исходники
 
 ## Файлы
 
-- \`references.bib\`
-- \`natbib.tex\`
-- \`biblatex.tex\`
+- `references.bib`
+- `natbib.tex`
+- `biblatex.tex`
 
 # Заключение
 
