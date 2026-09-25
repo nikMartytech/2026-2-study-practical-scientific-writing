@@ -1,0 +1,23 @@
+{
+  "name": "practical-scientific-writing",
+  "version": "1.0.0",
+  "description": "Computer Skills for Scientific Writing",
+  "repository": "https://github.com/nikMartytech/2026-2-study-practical-scientific-writing.git",
+  "author": "Мартынов Николай Алексеевич",
+  "license": "CC-BY-4.0",
+  "scripts": {
+    "commit": "cz",
+    "commitlint": "commitlint --edit"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0"
+  }
+}
