@@ -19,7 +19,7 @@ subtitle: "Диаграммы и рисунки как код"
 
 ## График функций
 
-Используется \`pgfplots\`.
+Используется `pgfplots`.
 
 ## Ковёр Серпинского
 
@@ -29,9 +29,9 @@ subtitle: "Диаграммы и рисунки как код"
 
 ## Исходники
 
-- \`tikz-graph.tex\`
-- \`tikz-plot.tex\`
-- \`sierpinski-carpet.tex\`
+- `tikz-graph.tex`
+- `tikz-plot.tex`
+- `sierpinski-carpet.tex`
 
 # Заключение
 
