@@ -1,0 +1,24 @@
+project:
+  title: "report"
+  output-dir: "_output"
+
+lang: ru-RU
+number-sections: true
+toc: true
+toc-title: "Содержание"
+toc-depth: 2
+
+format:
+  html:
+    toc: true
+    number-sections: true
+  docx:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+    documentclass: scrreprt
+    papersize: a4
+    fontsize: 12pt
+    linestretch: 1.5

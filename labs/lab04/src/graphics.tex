@@ -1,0 +1,27 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\begin{document}
+
+\section{Графика}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=.65\textwidth]{figure.pdf}
+  \caption{Графика, созданная для лабораторной работы}
+  \label{fig:example}
+\end{figure}
+
+Ссылка на рисунок: рис.~\ref{fig:example}.
+
+\section{Преобразования}
+
+\includegraphics[width=.35\textwidth,angle=8]{figure.pdf}
+\hfill
+\includegraphics[scale=.45]{figure.pdf}
+
+\end{document}

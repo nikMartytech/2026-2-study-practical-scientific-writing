@@ -1,0 +1,48 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{array,booktabs,multirow,siunitx,tabularx}
+
+\begin{document}
+
+\section{Базовая таблица}
+\begin{center}
+\begin{tabular}{lcr}
+\toprule
+Параметр & Обозначение & Значение\\
+\midrule
+Длина & $L$ & 12.5\\
+Ширина & $W$ & 8.2\\
+Высота & $H$ & 3.1\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Объединение столбцов}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\multicolumn{3}{c}{Результаты эксперимента}\\
+\midrule
+Опыт & Параметр & Значение\\
+1 & $x$ & 10\\
+2 & $y$ & 20\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Числовое выравнивание}
+\begin{center}
+\begin{tabular}{l S[table-format=2.2]}
+\toprule
+Измерение & {Значение}\\
+\midrule
+A & 1.25\\
+B & 12.50\\
+C & 9.80\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

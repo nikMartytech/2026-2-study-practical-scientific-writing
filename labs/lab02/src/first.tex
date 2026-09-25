@@ -1,0 +1,29 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage{lmodern}
+
+\title{Первый документ LaTeX}
+\author{Мартынов Николай Алексеевич}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Структура документа}
+Это обычный текст. % Этот комментарий не выводится в PDF.
+
+LaTeX отделяет содержание от оформления.
+Сноска создаётся командой\footnote{Пример сноски в LaTeX.}.
+
+\section{Специальные символы}
+\# \$ \% \& \_ \{ \} \textbackslash
+
+\section{Вывод}
+Исходный файл можно скомпилировать командой:
+\begin{verbatim}
+pdflatex first.tex
+\end{verbatim}
+
+\end{document}

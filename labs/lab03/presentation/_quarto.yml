@@ -1,0 +1,15 @@
+project:
+  title: "presentation"
+  output-dir: "_output"
+
+lang: ru-RU
+slide-level: 2
+
+format:
+  revealjs:
+    transition: slide
+    slide-number: true
+    theme: beige
+  beamer:
+    aspectratio: 169
+    toc: true
