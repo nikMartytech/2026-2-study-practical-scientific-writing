@@ -6,6 +6,11 @@ on:
       - main
     paths:
       - ".release-trigger"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".release-trigger"
   workflow_dispatch:
 
 permissions:
