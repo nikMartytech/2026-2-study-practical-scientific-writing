@@ -9,32 +9,32 @@ subtitle: "Включение графики"
 
 ## Цель
 
-Освоить \`graphicx\`, плавающие объекты и перекрёстные ссылки.
+Освоить `graphicx`, плавающие объекты и перекрёстные ссылки.
 
 # Выполнение
 
 ## Подключение
 
-\`\`\`latex
+```latex
 \includegraphics[width=.65\textwidth]{figure.pdf}
-\`\`\`
+```
 
 ## Параметры
 
-- \`width\`;
-- \`height\`;
-- \`angle\`;
-- \`scale\`.
+- `width`;
+- `height`;
+- `angle`;
+- `scale`.
 
 ## Плавающий объект
 
-Используются \`figure\`, \`caption\`, \`label\`, \`ref\`.
+Используются `figure`, `caption`, `label`, `ref`.
 
 # Результат
 
 ## Итог
 
-Созданы \`src/figure.tex\` и \`src/graphics.tex\`.
+Созданы `src/figure.tex` и `src/graphics.tex`.
 
 # Заключение
 
