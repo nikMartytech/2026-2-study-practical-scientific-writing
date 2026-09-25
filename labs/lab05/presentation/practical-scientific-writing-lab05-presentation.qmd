@@ -9,28 +9,28 @@ subtitle: "Таблицы"
 
 ## Цель
 
-Освоить окружение \`tabular\` и оформление научных таблиц.
+Освоить окружение `tabular` и оформление научных таблиц.
 
 # Выполнение
 
 ## Типы столбцов
 
-- \`l\` — left;
-- \`c\` — center;
-- \`r\` — right.
+- `l` — left;
+- `c` — center;
+- `r` — right.
 
 ## Дополнительные средства
 
-- \`booktabs\`;
-- \`multicolumn\`;
-- \`siunitx\`;
-- \`tabularx\`.
+- `booktabs`;
+- `multicolumn`;
+- `siunitx`;
+- `tabularx`.
 
 # Результат
 
 ## Итог
 
-Готовый исходник: \`src/tables.tex\`.
+Готовый исходник: `src/tables.tex`.
 
 # Заключение
 
