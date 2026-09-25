@@ -9,28 +9,28 @@ subtitle: "Презентации LaTeX"
 
 ## Цель
 
-Освоить класс \`beamer\`.
+Освоить класс `beamer`.
 
 # Структура
 
 ## Основные элементы
 
-- \`\documentclass{beamer}\`
-- \`frame\`
-- \`section\`
+- `\documentclass{beamer}`
+- `frame`
+- `section`
 - темы оформления
 - overlays
 
 ## Постер
 
-Подготовлен отдельный пример с \`beamerposter\`.
+Подготовлен отдельный пример с `beamerposter`.
 
 # Результат
 
 ## Исходники
 
-- \`src/beamer.tex\`
-- \`src/poster.tex\`
+- `src/beamer.tex`
+- `src/poster.tex`
 
 # Заключение
 
