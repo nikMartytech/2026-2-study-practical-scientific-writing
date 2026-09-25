@@ -1,0 +1,10 @@
+\documentclass[border=1cm]{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[every node/.style={circle,draw,minimum size=8mm}]
+\foreach \name/\angle in {A/90,B/30,C/-30,D/-90,E/-150,F/150}
+  \node (\name) at (\angle:2.5cm) {\name};
+\foreach \a/\b in {A/B,B/C,C/D,D/E,E/F,F/A,A/D,B/E,C/F}
+  \draw (\a) -- (\b);
+\end{tikzpicture}
+\end{document}

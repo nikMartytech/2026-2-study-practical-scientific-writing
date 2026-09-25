@@ -1,0 +1,26 @@
+name: Validate course structure
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check COURSE
+        run: test "$(cat COURSE)" = "practical-scientific-writing"
+
+      - name: Check laboratory sources
+        shell: bash
+        run: |
+          set -e
+          for n in 01 02 03 04 05 06 07 08; do
+            test -f "labs/lab${n}/report/practical-scientific-writing-lab${n}-report.qmd"
+            test -f "labs/lab${n}/presentation/practical-scientific-writing-lab${n}-presentation.qmd"
+            test -f "labs/lab${n}/report/_quarto.yml"
+            test -f "labs/lab${n}/presentation/_quarto.yml"
+          done

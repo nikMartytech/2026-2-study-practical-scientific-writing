@@ -1,0 +1,29 @@
+name: Render laboratory HTML
+
+on:
+  push:
+    branches: [main, master, develop]
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render reports and presentations
+        shell: bash
+        run: |
+          set -e
+          for n in 01 02 03 04 05 06 07 08; do
+            quarto render "labs/lab${n}/report" --to html
+            quarto render "labs/lab${n}/presentation" --to revealjs
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: laboratory-html
+          path: |
+            labs/lab*/report/_output
+            labs/lab*/presentation/_output
