@@ -1,0 +1,102 @@
+name: Publish laboratory releases
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".release-trigger"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Quarto and TinyTeX
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Install fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-dejavu-core
+
+      - name: Build and publish lab releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p dist
+
+          releases=(
+            "01|v1.1.0|Подготовка рабочего пространства"
+            "02|v1.2.0|Структура документа LaTeX"
+            "03|v1.3.0|Набор математических формул"
+            "04|v1.4.0|Включение графики"
+            "05|v1.5.0|Таблицы"
+            "06|v1.6.0|Работа с библиографией"
+            "07|v1.7.0|Презентации LaTeX"
+            "08|v1.8.0|Диаграммы и рисунки как код"
+          )
+
+          for item in "${releases[@]}"; do
+            IFS='|' read -r lab tag title <<< "$item"
+
+            report_dir="labs/lab${lab}/report"
+            presentation_dir="labs/lab${lab}/presentation"
+            report_base="practical-scientific-writing-lab${lab}-report"
+            presentation_base="practical-scientific-writing-lab${lab}-presentation"
+            out="dist/lab${lab}"
+
+            rm -rf "$report_dir/_output" "$presentation_dir/_output" "$out"
+            mkdir -p "$out"
+
+            quarto render "$report_dir/${report_base}.qmd" --to docx
+            quarto render "$report_dir/${report_base}.qmd" --to pdf
+            quarto render "$presentation_dir/${presentation_base}.qmd" --to revealjs
+            quarto render "$presentation_dir/${presentation_base}.qmd" --to beamer
+
+            cp "$report_dir/_output/${report_base}.docx" "$out/"
+            cp "$report_dir/_output/${report_base}.pdf" "$out/"
+            cp "$report_dir/${report_base}.qmd" "$out/"
+
+            cp "$presentation_dir/_output/${presentation_base}.html" "$out/"
+            cp "$presentation_dir/_output/${presentation_base}.pdf" "$out/"
+            cp "$presentation_dir/${presentation_base}.qmd" "$out/"
+
+            notes="Лабораторная работа №$((10#$lab)) — ${title}"
+
+            if gh release view "$tag" >/dev/null 2>&1; then
+              gh release edit "$tag" --title "lab${lab}" --notes "$notes"
+            else
+              gh release create "$tag" --target "$GITHUB_SHA" --title "lab${lab}" --notes "$notes"
+            fi
+
+            gh release upload "$tag" "$out"/* --clobber
+          done
+
+      - name: Verify release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for lab in 01 02 03 04 05 06 07 08; do
+            version="1.$((10#$lab)).0"
+            tag="v${version}"
+            count=$(gh release view "$tag" --json assets --jq '.assets | length')
+            echo "$tag assets: $count"
+            test "$count" -eq 6
+          done

@@ -16,8 +16,13 @@ format:
     toc: true
     number-sections: true
   pdf:
+    pdf-engine: xelatex
     toc: true
     number-sections: true
     documentclass: scrreprt
     papersize: a4
     fontsize: 12pt
+    linestretch: 1.5
+    mainfont: "DejaVu Serif"
+    sansfont: "DejaVu Sans"
+    monofont: "DejaVu Sans Mono"

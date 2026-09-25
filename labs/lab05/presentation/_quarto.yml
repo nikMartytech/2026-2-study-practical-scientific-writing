@@ -4,6 +4,7 @@ project:
 
 lang: ru-RU
 slide-level: 2
+embed-resources: true
 
 format:
   revealjs:
@@ -11,5 +12,9 @@ format:
     slide-number: true
     theme: beige
   beamer:
+    pdf-engine: xelatex
     aspectratio: 169
     toc: true
+    mainfont: "DejaVu Serif"
+    sansfont: "DejaVu Sans"
+    monofont: "DejaVu Sans Mono"
