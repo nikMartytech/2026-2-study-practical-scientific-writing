@@ -1,0 +1,48 @@
+name: Publish lab01 release
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Create v1.0.0 tag if missing
+        env:
+          V1_SHA: "446cb109c2fd343f51f51901f07c37df115cb3a6"
+        run: |
+          if ! git ls-remote --exit-code --tags origin refs/tags/v1.0.0 >/dev/null 2>&1; then
+            git tag v1.0.0 "$V1_SHA"
+            git push origin v1.0.0
+          fi
+
+      - name: Create v1.1.0 tag if missing
+        run: |
+          if ! git ls-remote --exit-code --tags origin refs/tags/v1.1.0 >/dev/null 2>&1; then
+            git tag v1.1.0 "$GITHUB_SHA"
+            git push origin v1.1.0
+          fi
+
+      - name: Create GitHub Release v1.1.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view v1.1.0 >/dev/null 2>&1; then
+            gh release create v1.1.0               --title "v1.1.0 — Laboratory work №1"               --notes-file RELEASE_NOTES.md
+          fi
